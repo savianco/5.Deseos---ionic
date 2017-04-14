@@ -9,9 +9,9 @@
   <ion-grid *ngIf="( _listaDeseos.listas | pendientes:true  ).length === 0">
     <ion-row>
       <ion-col class="text-center caja-vacia">
-        <ion-icon class="icono-grande" ios="ios-sunny" md="md-sunny"></ion-icon>
+        <ion-icon class="icono-grande" ios="ios-archive" md="md-archive"></ion-icon>
         <p>
-          No hay ninguna lista.
+          No hay ninguna lista de temas terminados.
         </p>
       </ion-col>
     </ion-row>
@@ -30,13 +30,14 @@
 
       <ion-item (click)="verDetalle(lista, i )"
           *ngFor="let item of lista.items | slice:0:2">
-        <ion-icon *ngIf="!item.completado" ios="ios-square-outline" md="md-square-outline"></ion-icon>
-        <ion-icon *ngIf="item.completado" ios="ios-checkbox-outline" md="md-checkbox-outline"></ion-icon>
+        <ion-icon item-left *ngIf="!item.completado" ios="ios-square-outline" md="md-square-outline"></ion-icon>
+        <ion-icon item-left *ngIf="item.completado" ios="ios-checkbox-outline" md="md-checkbox-outline"></ion-icon>
         {{ item.nombre }}
       </ion-item>
 
       <ion-item class="text-center" *ngIf="lista.items.length > 2">
-        <ion-icon color="primary" ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
+        <ion-icon (click)="verDetalle(lista, i )"
+        color="primary" ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
       </ion-item>
 
 
